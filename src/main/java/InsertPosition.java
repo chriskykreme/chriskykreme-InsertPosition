@@ -1,4 +1,4 @@
-
+import java.util.*;
 
 public class InsertPosition {
 
@@ -15,6 +15,18 @@ public class InsertPosition {
      * @return return the index that a number should be inserted into a sorted array.
      */
     public int searchInsert(int[] nums, int target) {
-        return -1;
+        int[] copy = Arrays.copyOf(nums, nums.length+1);
+        copy[nums.length] = target;
+        Arrays.sort(copy);
+        
+        int idx = 0;
+        for(int i = 0;i < copy.length; i++){
+            if(copy[i] == target){
+                idx = i;
+                break;
+            }
+        }
+
+        return idx;
     }
 }
